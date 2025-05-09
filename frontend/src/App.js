@@ -1,34 +1,28 @@
-
-
-// App.js
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { AuthProvider } from './contexts/AuthContext';
 import Navbar from './components/Navbar';
-import Home from './pages/HomePage';
-import Login from './pages/LoginPage';
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
-import ProtectedRoute from './components/ProtectedRoute';
-import Dashboard from './pages/DashboardPage';
+import DashboardPage from './pages/DashboardPage';
+import styles from './App.module.css';
 
 function App() {
   return (
-    <AuthProvider>
+    <div className={styles.appContainer}>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/signup" element={<SignupPage />} /> 
-        <Route path="/login" element={<Login />} />
-        <Route 
-          path="/dashboard" 
-          element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          } 
-        />
-      </Routes>
-    </AuthProvider>
+      <main className={styles.mainContent}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
+        </Routes>
+      </main>
+      <footer className={styles.appFooter}>
+        <p>&copy; {new Date().getFullYear()} Atria Podcast Club. All rights reserved.</p>
+      </footer>
+    </div>
   );
 }
 

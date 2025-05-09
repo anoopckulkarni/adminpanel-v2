@@ -1,4 +1,5 @@
 import shortenerRoutes from './routes/shortener.js';
+app.use('/api', authRoutes); // Mount authRoutes under /api
 app.use('/api/shorten', shortenerRoutes);
 app.use('/r', shortenerRoutes); // This handles redirection
 router.get('/mine', protect, async (req, res) => {

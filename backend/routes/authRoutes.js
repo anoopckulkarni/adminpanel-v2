@@ -3,6 +3,7 @@ const router = express.Router();
 const authController = require('../controllers/authController');
 const authMiddleware = require('../middleware/authMiddleware');
 
+router.post('/api/auth/login', authController.login);
 router.post('/signup', authController.signup);
 router.post('/login', authController.login);
 router.post('/mfa/enable', authMiddleware, authController.enableMfa);
